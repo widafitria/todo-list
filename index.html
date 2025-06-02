@@ -100,6 +100,28 @@
     </div>
 </form>
 
+<script type="module">
+  import { tambahTodoList } from "./main.js";
+
+  $(document).ready(function() {
+    $("#formTambah").submit(async function(event) {
+      event.preventDefault();
+
+      const teks = $("#inputTugas").val().trim();
+      const status = $("#inputStatus").val();
+
+      if (teks && status) {
+        await tambahTodoList(teks, status);
+
+        // Refresh halaman atau tampilkan pesan sukses
+        location.reload(); // Atau update tabel tanpa reload
+      } else {
+        alert("Harap isi nama tugas dan pilih status.");
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>
